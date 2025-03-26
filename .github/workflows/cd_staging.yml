@@ -1,0 +1,9 @@
+name: Deploy to staging
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  redeploy_everything:
+    name: Deploying the frontend to staging
