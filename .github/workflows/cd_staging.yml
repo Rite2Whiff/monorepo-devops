@@ -1,9 +1,19 @@
 name: Deploy to staging
 on:
   push:
-    branches:
-      - "main"
+    branches: [main]
 
 jobs:
   redeploy_everything:
-    name: Deploying the frontend to staging
+    runs-on: ubuntu-latest
+    name: Deploying everything to the staging cluster
+    steps:
+      - run: |
+          echo ${{secrets.SSH_PRIVATE_KEY}} &> Mohit.pem
+          ssh -i Mohit.pem ubuntu@65.2.80.48
+          cd monorepo-devops/ && git pull
+          npm install
+          rpm run build
+          pm2 restart fe-server
+          pm2 restart http-server
+          pm2 restart ws-server
