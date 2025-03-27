@@ -9,6 +9,7 @@ jobs:
     name: Deploying everything to the production cluster
     steps:
       - run: |
+          echo hello world
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> Mohit.pem
           mkdir -p /home/runner/.ssh
           ls /home/runner/.ssh
