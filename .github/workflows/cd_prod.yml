@@ -1,4 +1,4 @@
-name: Deploy to staging
+name: Deploy to production
 on:
   push:
     branches: [production]
@@ -6,7 +6,7 @@ on:
 jobs:
   redeploy_everything:
     runs-on: ubuntu-latest
-    name: Deploying everything to the staging cluster
+    name: Deploying everything to the production cluster
     steps:
       - run: |
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> Mohit.pem
