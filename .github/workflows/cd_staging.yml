@@ -17,4 +17,4 @@ jobs:
           chmod 700 Mohit.pem
           ssh -i Mohit.pem ubuntu@65.2.80.48 -t "cd monorepo-devops/ && git pull origin main
           && npm install && npm run build && pm2 restart fe-server && pm2 restart 
-          http-server && pm2 restart ws-server
+          http-server && pm2 restart ws-server"
