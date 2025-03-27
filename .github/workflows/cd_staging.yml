@@ -10,8 +10,10 @@ jobs:
     steps:
       - run: |
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> Mohit.pem
-          mkdir .ssh
-          echo "${{secrets.KNOWN_HOSTS}}" &> ~/.ssh/knonw_hosts
+          mkdir -p /home/runner/.ssh
+          ls /home/runner/.ssh
+          touch /home/runner/.ssh/known_hosts
+          echo "${{secrets.KNOWN_HOSTS}}" &> /home/runner/.ssh/known_hosts
           ssh -i Mohit.pem ubuntu@65.2.80.48
           cd monorepo-devops/ && git pull
           npm install
