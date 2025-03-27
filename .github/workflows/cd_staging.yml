@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           echo "${{secrets.SSH_PRIVATE_KEY}}" &> Mohit.pem
-          mdkir -p  /home/runner/.ssh
+          mdkir -p /home/runner/.ssh
           ls /home/runner/.ssh
           touch /home/runner/.ssh/known_hosts
           echo "${{secrets.KNOWN_HOSTS}}" &> /home/runner/.ssh
