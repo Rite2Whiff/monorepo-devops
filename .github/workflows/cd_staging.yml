@@ -9,7 +9,8 @@ jobs:
     name: Deploying everything to the staging cluster
     steps:
       - run: |
-          echo ${{secrets.SSH_PRIVATE_KEY}} &> Mohit.pem
+          echo "${{secrets.SSH_PRIVATE_KEY}}" &> Mohit.pem
+          echo "${{secrets.KNOWN_HOSTS}}" &> ~/.ssh/known_host
           ssh -i Mohit.pem ubuntu@65.2.80.48
           cd monorepo-devops/ && git pull
           npm install
